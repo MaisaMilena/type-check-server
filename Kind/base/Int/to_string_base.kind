@@ -1,0 +1,6 @@
+Int.to_string_base(base: Nat, a: Int): String
+  open a
+  case a.neg {
+    zero: Nat.to_string_base(base, a.pos),
+    succ: String.cons('-', Nat.to_string_base(base, a.neg)),
+  }

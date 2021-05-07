@@ -1,0 +1,4 @@
+Int.to_nat(a: Int): Nat
+  case a {
+    new: a.pos
+  }

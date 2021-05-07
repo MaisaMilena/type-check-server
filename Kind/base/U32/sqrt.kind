@@ -1,0 +1,3 @@
+U32.sqrt(val: U32): U32
+  open val
+  U32.new(Word.sqrt!(val.value))

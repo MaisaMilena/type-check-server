@@ -1,0 +1,13 @@
+Int.new(pos: Nat, neg: Nat): Int
+  (P, new)
+  // if pos=0, return new(0,neg)
+  // if neg=0, return new(pos,0)
+  // else, recurse with pos-1, neg-1
+  case pos {
+    zero: new(Nat.zero, neg)                     
+    succ: case neg {
+      zero: new(Nat.succ(pos.pred), Nat.zero)
+      succ: Int.new(pos.pred, neg.pred)(P, new)
+    }!
+  }: P(Int.new(pos, neg))
+

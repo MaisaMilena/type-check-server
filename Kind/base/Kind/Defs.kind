@@ -1,0 +1,2 @@
+Kind.Defs: Type
+  BitsMap<Kind.Def>

@@ -1,0 +1,4 @@
+Main: IO<Unit>
+  IO {
+    IO.print("Hello, world!")
+  }

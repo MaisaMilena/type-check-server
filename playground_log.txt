@@ -1,0 +1,2 @@
+
+{"status":"sucess","timestamp":1620347510439,"processingTime":95,"url":"/api/check_term?code=type%20Foo%20%7B%20new(num:%20Nat)%20%7D","code":"type Foo { new(num: Nat) }"}
