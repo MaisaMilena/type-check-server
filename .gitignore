@@ -12,4 +12,5 @@ web/*.lock
 base/.cache
 playground.kind
 playground.txt
+playground_log.txt
 .env
