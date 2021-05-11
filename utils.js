@@ -6,9 +6,7 @@ const kind = require("kind-lang");
 async function type_check(code) {
   try{
     var code = clear_data(code)
-    console.log(process.cwd());
     process.chdir("../Kind/base");
-    console.log(process.cwd());
     fs.writeFileSync("playground.kind", code);
     let aux = __dirname + "/playground.txt";
     execSync("kind playground.kind > "+aux);
