@@ -1,4 +1,0 @@
-I256.ltn(a: I256, b: I256): Bool
-  open a
-  open b
-  Word.s_ltn!(a.value, b.value)

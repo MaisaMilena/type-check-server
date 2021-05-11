@@ -1,3 +1,0 @@
-type Buffer32 {
-  new(depth: Nat, array: Array<U32, depth>)
-}

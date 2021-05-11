@@ -1,3 +1,0 @@
-type Mons.Sprite {
-  new(x: U32, y: U32, z: U32, img: VoxBox)
-}

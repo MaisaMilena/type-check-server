@@ -1,5 +1,0 @@
-Bool.eql(a: Bool, b: Bool): Bool
-  case a {
-    true: b,
-    false: Bool.not(b),
-  }

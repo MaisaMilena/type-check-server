@@ -1,6 +1,0 @@
-type Kind.Status {
-  init,
-  wait,
-  done(cached: Bool),
-  fail(errors: List<Kind.Error>),
-}

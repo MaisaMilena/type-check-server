@@ -1,3 +1,0 @@
-type F64 {
-  new(word: Word(64))
-}

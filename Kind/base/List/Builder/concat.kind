@@ -1,2 +1,0 @@
-List.Builder.concat<A: Type>(a: List.Builder(A), b: List.Builder(A)): List.Builder(A)
-   (x) a(b(x))

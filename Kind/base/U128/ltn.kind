@@ -1,4 +1,0 @@
-U128.ltn(a: U128, b: U128): Bool
-  open a
-  open b
-  Word.ltn!(a.value, b.value)

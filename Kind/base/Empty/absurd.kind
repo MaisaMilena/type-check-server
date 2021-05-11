@@ -1,2 +1,0 @@
-Empty.absurd<P: Type>(x: Empty): P
-  case x {}

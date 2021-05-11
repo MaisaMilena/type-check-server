@@ -1,2 +1,0 @@
-Kind.Context.names(ctx: Kind.Context): List<Kind.Name>
-  List.mapped!(ctx)!((x) Pair.fst!!(x))

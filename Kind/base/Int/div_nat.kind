@@ -1,3 +1,0 @@
-Int.div_nat(a: Int, n: Nat): Int
-  open a
-  Int.new(Nat.div(a.pos, n), Nat.div(a.neg, n))

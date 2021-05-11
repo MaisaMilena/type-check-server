@@ -1,2 +1,0 @@
-U256.read_base(base: U256, str: String): U256
-  U256.read_base(base, str)

@@ -1,2 +1,0 @@
-Kind.Name.read(str: String): Kind.Name
-  str

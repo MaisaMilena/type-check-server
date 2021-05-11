@@ -1,3 +1,0 @@
-Mons.Game.set_tik(tik: U32, game: Mons.Game): Mons.Game
-  open game
-  Mons.Game.new(game.usr, game.pos, game.map, game.stt, tik)

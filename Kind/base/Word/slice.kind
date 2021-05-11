@@ -1,3 +1,0 @@
-// TODO
-Word.slice<size: Nat>(a: Word(size), b: Word(size), str: String): String
-  Word.slice!(a, b, str)

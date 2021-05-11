@@ -1,2 +1,0 @@
-List.pure<A : Type>(x : A) : List<A>
-  List.cons<A>(x)(List.nil<A>)

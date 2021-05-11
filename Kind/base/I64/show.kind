@@ -1,3 +1,0 @@
-I64.show(a: I64): String
-  open a
-  Word.show!(a.value)

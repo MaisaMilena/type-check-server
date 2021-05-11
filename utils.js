@@ -4,13 +4,15 @@ const kind = require("kind-lang");
 
 // Goes to /base to write a new file and type checks it
 async function type_check(code) {
-  var path = __dirname + "/Kind/base/playground.kind"
   try{
     var code = clear_data(code)
-    process.chdir("./Kind/base");
-    fs.writeFileSync(path, code);
-    execSync("kind playground.kind > ./../../playground.txt");
-    return format_output(fs.readFileSync("./../../playground.txt"));
+    console.log(process.cwd());
+    process.chdir("../Kind/base");
+    console.log(process.cwd());
+    fs.writeFileSync("playground.kind", code);
+    let aux = __dirname + "/playground.txt";
+    execSync("kind playground.kind > "+aux);
+    return format_output(fs.readFileSync(aux));
   } catch (e) {
     throw e;
   }
@@ -39,9 +41,9 @@ const date_now = () => {
 
 // Save the log of the request
 function save_log(log){
-  process.chdir("./../../log/");
+  let aux = __dirname + "/log/";
   try {
-    fs.writeFileSync(Date.now()+".txt", log)
+    fs.writeFileSync(aux + Date.now()+".txt", log)
     console.log(date_now()+": updated log");
   } catch (e) {
     console.log(date_now()+": couldn't save log: ", e);

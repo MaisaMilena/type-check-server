@@ -1,2 +1,0 @@
-Bool.is_true(b: Bool): Bool
-  b

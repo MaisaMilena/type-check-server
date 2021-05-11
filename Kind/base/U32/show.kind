@@ -1,3 +1,0 @@
-U32.show(a: U32): String
-  open a
-  Word.show!(a.value)

@@ -1,0 +1,1 @@
+{"status":"success","timestamp":1620765569433,"processingTime":138,"url":"/api/check_term?code=main:%20_%206%20+%2010","code":"main: _ 6   10"}

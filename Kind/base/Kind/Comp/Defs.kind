@@ -1,3 +1,0 @@
-// A map of Comp definitions. No types or metadata are stored, just the term.
-Kind.Comp.Defs: Type
-  BitsMap(Kind.Comp)

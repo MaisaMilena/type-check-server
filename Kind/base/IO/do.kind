@@ -1,3 +1,0 @@
-IO.do(call: String, param: String): IO<Unit>
-  IO.ask<Unit>(call, param, (answer)
-  IO.end<Unit>(unit))

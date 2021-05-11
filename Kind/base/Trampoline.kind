@@ -1,4 +1,0 @@
-type Trampoline<A: Type> {
-  done(value: A)
-  wrap(value: Unit -> Trampoline<A>)
-}

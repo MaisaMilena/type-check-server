@@ -1,3 +1,0 @@
-I64.inc(a: I64): I64
-  open a
-  I64.new(Word.inc!(a.value))

@@ -1,3 +1,0 @@
-type Functor<F: Type -> Type> {
-  new(map: <A: Type, B: Type> -> (A -> B) -> F(A) -> F(B))
-}

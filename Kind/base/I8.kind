@@ -1,3 +1,0 @@
-type I8 {
-  new(value: Word(8))
-}

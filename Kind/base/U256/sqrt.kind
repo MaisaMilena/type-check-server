@@ -1,3 +1,0 @@
-U256.sqrt(val: U256): U256
-  open val
-  U256.new(Word.sqrt!(val.value))

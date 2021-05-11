@@ -1,3 +1,0 @@
-I16.is_neg(a: I16): Bool
-  open a
-  Word.is_neg!(a.value)

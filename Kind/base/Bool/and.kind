@@ -1,5 +1,0 @@
-Bool.and(a: Bool, b: Bool): Bool
-  case a {
-    true: b,
-    false: false,
-  }

@@ -1,6 +1,0 @@
-type Mons.Dir {
-  right,
-  up,
-  left,
-  down
-}

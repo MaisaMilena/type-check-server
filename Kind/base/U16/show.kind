@@ -1,3 +1,0 @@
-U16.show(a: U16): String
-  open a
-  Word.show!(a.value)

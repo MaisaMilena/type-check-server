@@ -1,3 +1,0 @@
-I32.abs(a: I32): I32
-  let mask = I32.shr(a, +31#32)
-  I32.xor(I32.add(mask, a), mask)

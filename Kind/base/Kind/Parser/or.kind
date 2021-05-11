@@ -1,2 +1,0 @@
-Kind.Parser.or: Nat -> Kind.Term -> Parser(Kind.Term)
-  Kind.Parser.op("||", "Bool.or")

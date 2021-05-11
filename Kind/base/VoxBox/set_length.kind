@@ -1,3 +1,0 @@
-VoxBox.set_length(length: U32, img: VoxBox): VoxBox
-  open img
-  VoxBox.new(length, img.capacity, img.buffer)

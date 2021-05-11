@@ -1,2 +1,0 @@
-Nat.to_u128(n: Nat): U128
-  U128.new(Nat.to_word!(n))

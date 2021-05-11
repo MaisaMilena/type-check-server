@@ -1,2 +1,0 @@
-Function.flip<A: Type, B: Type, C: Type>(f: A -> B -> C, y: B, x: A): C
-  f(x, y)

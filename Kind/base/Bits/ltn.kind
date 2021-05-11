@@ -1,2 +1,0 @@
-Bits.ltn(a: Bits, b: Bits): Bool
-  Cmp.as_ltn(Bits.cmp(a, b))

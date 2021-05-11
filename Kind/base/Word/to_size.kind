@@ -1,2 +1,0 @@
-Word.to_size<size: Nat>(word: Word(size)): Nat
-  Word.to_size.go<size>(word, 0)

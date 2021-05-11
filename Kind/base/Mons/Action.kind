@@ -1,3 +1,0 @@
-type Mons.Action{
-  Mons.Action.walk(dir: Mons.Dir)
-}

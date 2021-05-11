@@ -1,2 +1,0 @@
-List.take_while<A: Type>(f: A -> Bool, xs: List<A>) : List<A>
-  Pair.fst(List<A>, List<A>, List.take_while.go!(f, xs))

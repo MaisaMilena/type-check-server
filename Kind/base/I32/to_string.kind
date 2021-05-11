@@ -1,3 +1,0 @@
-I32.to_string(a: I32): String
-  open a
-  Word.s_show!(a.value)

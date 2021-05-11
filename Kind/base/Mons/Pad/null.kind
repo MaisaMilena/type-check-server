@@ -1,2 +1,0 @@
-Mons.Pad.null: Mons.Pad
-  Mons.Pad.new(Bool.false, Bool.false, Bool.false, Bool.false)

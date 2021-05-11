@@ -1,2 +1,0 @@
-Nat.divides(a: Nat, b: Nat): Type
-  [x: Nat] ((a * x) == b)

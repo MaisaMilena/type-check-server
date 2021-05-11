@@ -1,2 +1,0 @@
-U128.length(str: String): U128
-  U128.length(str)

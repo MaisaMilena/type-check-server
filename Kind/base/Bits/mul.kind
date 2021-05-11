@@ -1,2 +1,0 @@
-Bits.mul(a: Bits, b: Bits): Bits
-  Bits.mul.go(a, b, Bits.e)

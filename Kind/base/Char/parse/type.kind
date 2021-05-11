@@ -1,5 +1,0 @@
-Char.parse.type(str: String): Type
-  case str {
-    nil : Unit,
-    cons: Char
-  }

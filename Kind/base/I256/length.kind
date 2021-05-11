@@ -1,3 +1,0 @@
-I256.length(str: String): I256
-  I256.length(str)
-

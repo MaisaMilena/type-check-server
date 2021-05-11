@@ -1,6 +1,0 @@
-Bool.notf(a: Bool): Bool
-  <P> (t, f)
-  case a{
-    true: f,
-    false: t,
-  } : P(Bool.notf(a))

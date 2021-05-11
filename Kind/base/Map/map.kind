@@ -1,2 +1,0 @@
-Map.map<A: Type, B: Type>(fn: A -> B, map: Map(A)): Map(B)
-  BitsMap.map<A,B>(fn, map)

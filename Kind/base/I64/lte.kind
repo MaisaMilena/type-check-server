@@ -1,4 +1,0 @@
-I64.lte(a: I64, b: I64): Bool
-  open a
-  open b
-  Word.s_lte!(a.value, b.value)

@@ -1,2 +1,0 @@
-Nat.to_u16(n: Nat): U16
-  U16.new(Nat.to_word!(n))

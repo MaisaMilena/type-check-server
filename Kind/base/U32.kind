@@ -1,3 +1,0 @@
-type U32 {
-  new(value: Word(32))
-}

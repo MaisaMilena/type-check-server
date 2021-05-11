@@ -1,3 +1,0 @@
-Mons.Game.set_map(map: Mons.Map, game: Mons.Game): Mons.Game
-  open game
-  Mons.Game.new(game.usr, game.pos, map, game.stt, game.tik)

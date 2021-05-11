@@ -1,3 +1,0 @@
-Bits.mod(a: Bits, b: Bits): Bits
-  let q = Bits.div(a, b)
-  Bits.sub(a, Bits.mul(b, q))

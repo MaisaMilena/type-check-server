@@ -1,7 +1,0 @@
-U16.cmp(a: U16, b: U16): Cmp
-  if U16.ltn(a, b) then
-    Cmp.ltn
-  else if U16.eql(a, b) then
-    Cmp.eql
-  else
-    Cmp.gtn

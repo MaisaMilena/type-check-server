@@ -1,3 +1,0 @@
-type U64 {
-  new(value: Word(64))
-}

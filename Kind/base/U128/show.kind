@@ -1,3 +1,0 @@
-U128.show(a: U128): String
-  open a
-  Word.show!(a.value)

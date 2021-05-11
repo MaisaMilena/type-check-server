@@ -1,3 +1,0 @@
-U256.to_nat(a: U256): Nat
-  open a 
-  Word.to_nat!(a.value)

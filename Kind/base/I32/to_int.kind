@@ -1,3 +1,0 @@
-I32.to_int(a: I32): Int
-  open a
-  Word.to_int!(a.value)

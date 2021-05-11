@@ -1,3 +1,0 @@
-Mons.Kind.set_default_battle_spr:  Bool -> VoxBox
-  // (is_up) Mons.Assets.battle_croni_u
-  (is_up) VoxBox.empty

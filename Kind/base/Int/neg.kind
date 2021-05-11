@@ -1,3 +1,0 @@
-Int.neg(a: Int): Int
-  open a
-  Int.new(a.neg, a.pos)

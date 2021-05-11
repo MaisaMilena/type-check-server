@@ -1,3 +1,0 @@
-type Dynamic {
-  new<A: Type>(value: A)
-}

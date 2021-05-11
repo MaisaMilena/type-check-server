@@ -1,3 +1,0 @@
-Mons.Object.get_ani(obj: Mons.Object): U32
-  open obj
-  obj.ani

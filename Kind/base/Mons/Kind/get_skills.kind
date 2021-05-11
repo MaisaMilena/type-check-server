@@ -1,3 +1,0 @@
-Mons.Kind.get_skills(kind: Mons.Kind): List<Mons.Skill>
-  open Mons.Kind.attr(kind) as attr
-  attr.skills

@@ -1,2 +1,0 @@
-Bool.is_false(b: Bool): Bool
-  Bool.not(b)

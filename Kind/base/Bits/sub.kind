@@ -1,2 +1,0 @@
-Bits.sub(a: Bits, b: Bits): Bits
-  Bits.reverse(Bits.sub.go(a, b, Bits.e))

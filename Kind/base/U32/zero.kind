@@ -1,2 +1,0 @@
-U32.zero: U32
-  U32.new(Word.zero!)

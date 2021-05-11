@@ -1,3 +1,0 @@
-type U256 {
-  new(value: Word(256))
-}

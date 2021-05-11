@@ -1,3 +1,0 @@
-U32.to_bits(a: U32): Bits
-  open a
-  Word.to_bits!(a.value)

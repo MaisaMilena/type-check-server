@@ -1,5 +1,0 @@
-Maybe.default<A: Type>(m: Maybe<A>, a: A): A
-  case m {
-    none: a,
-    some: m.value,
-  }

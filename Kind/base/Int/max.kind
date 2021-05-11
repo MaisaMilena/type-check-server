@@ -1,6 +1,0 @@
-Int.max(a: Int, b: Int): Int
-  let cmp = Cmp.as_gtn(Int.cmp(a, b))
-  case cmp {
-      true: a
-      false: b
-  }

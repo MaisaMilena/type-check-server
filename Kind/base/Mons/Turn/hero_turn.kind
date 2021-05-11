@@ -1,3 +1,0 @@
-Mons.Turn.hero_turn(turn: Mons.Turn): Bool
-  open turn
-  turn.exec_hero

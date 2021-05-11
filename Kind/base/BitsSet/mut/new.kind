@@ -1,2 +1,0 @@
-BitsSet.mut.new(a: Unit): BitsSet
-  BitsSet.new

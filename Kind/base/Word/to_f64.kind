@@ -1,3 +1,0 @@
-// TODO
-Word.to_f64<size: Nat>(a: Word(size)): F64
-  Word.to_f64!(a)

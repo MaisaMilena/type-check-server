@@ -1,3 +1,0 @@
-type Mons.Pad {
-  new(r: Bool, u: Bool, l: Bool, d: Bool)
-}

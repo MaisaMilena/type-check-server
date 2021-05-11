@@ -1,3 +1,0 @@
-U64.bit_length(size: U64): Nat
-  open size
-  Word.bit_length!(size.value)

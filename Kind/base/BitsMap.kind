@@ -1,4 +1,0 @@
-type BitsMap <A: Type> {
-  new,
-  tie(val: Maybe<A>, lft: BitsMap<A>, rgt: BitsMap<A>),
-}

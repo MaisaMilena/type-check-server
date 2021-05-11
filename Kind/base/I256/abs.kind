@@ -1,3 +1,0 @@
-I256.abs(a: I256): I256
-  open a
-  I256.new(Word.abs!(a.value))

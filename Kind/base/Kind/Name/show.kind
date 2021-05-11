@@ -1,2 +1,0 @@
-Kind.Name.show(name: Kind.Name): String
-  name

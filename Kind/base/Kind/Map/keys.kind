@@ -1,2 +1,0 @@
-Kind.Map.keys<A: Type>(xs: Kind.Map(A)): List<Kind.Name>
-  List.mapped!(Kind.Map.to_list!(xs))!(Pair.fst!!)

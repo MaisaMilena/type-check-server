@@ -1,5 +1,0 @@
-Nat.max(a:Nat, b:Nat): Nat
-    case Nat.gtn(a, b) {
-        true:a
-        false:b
-    }

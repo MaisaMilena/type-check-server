@@ -1,3 +1,0 @@
-I256.to_bits(a: I256): Bits
-  open a
-  Word.to_bits!(a.value)

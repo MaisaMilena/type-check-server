@@ -1,3 +1,0 @@
-I8.bit_length(size: I8): Nat
-  open size
-  Word.bit_length!(size.value)

@@ -1,5 +1,0 @@
-Bool.show(b: Bool): String
-  case b {
-    true: "Bool.true",
-    false: "Bool.false",
-  }

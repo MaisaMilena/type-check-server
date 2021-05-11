@@ -1,3 +1,0 @@
-type U128 {
-  new(value: Word(128))
-}

@@ -1,2 +1,0 @@
-Mons.Object.heal(obj: Mons.Object, val: U32): Mons.Object
-  Mons.Object.set_dmg(obj, U32.sub(Mons.Object.get_dmg(obj), val))

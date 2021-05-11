@@ -1,7 +1,0 @@
-Kind.Parser.annotation(init: Nat, term: Kind.Term): Parser(Kind.Term)
-  Parser {
-    Kind.Parser.text("::");
-    get type = Kind.Parser.term;
-    get orig = Kind.Parser.stop(init);
-    return Kind.Term.ori(orig, Kind.Term.ann(Bool.false, term, type));
-  }

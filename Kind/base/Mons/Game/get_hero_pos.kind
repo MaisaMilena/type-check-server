@@ -1,3 +1,0 @@
-Mons.Game.get_hero_pos(game: Mons.Game): Maybe<Pos32>
-  open game
-  Mons.Game.get_user_pos(game.usr, game)

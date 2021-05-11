@@ -1,2 +1,0 @@
-Provit.0(x: Bool): x == x
-  refl

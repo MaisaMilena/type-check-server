@@ -1,6 +1,0 @@
-Cmp.inv(cmp: Cmp): Cmp
-  case cmp {
-    ltn: Cmp.gtn,
-    eql: Cmp.eql,
-    gtn: Cmp.ltn,
-  }

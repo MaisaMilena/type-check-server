@@ -1,3 +1,0 @@
-Word.mod<size: Nat>(a: Word(size), b: Word(size)): Word(size)
-  let q = Word.div<size>(a, b)
-  Word.sub<size>(a, Word.mul<size>(b, q))

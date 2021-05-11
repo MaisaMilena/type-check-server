@@ -1,2 +1,0 @@
-BitsMap.keys<A: Type>(xs: BitsMap<A>): List<Bits>
-  List.reverse!(BitsMap.keys.go!(xs, Bits.e, List.nil!))

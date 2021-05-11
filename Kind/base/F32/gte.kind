@@ -1,4 +1,0 @@
-F32.gte(a: F32, b: F32): Bool
-  open a 
-  open b 
-  Word.gte!(a.word, b.word)

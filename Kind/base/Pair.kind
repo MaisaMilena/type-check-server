@@ -1,3 +1,0 @@
-type Pair <A: Type, B: Type> {
-  new(fst: A, snd: B)
-}

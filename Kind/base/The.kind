@@ -1,3 +1,0 @@
-type The <A: Type> ~ (x: A) {
-  value(x: A) ~ (x = x)
-}

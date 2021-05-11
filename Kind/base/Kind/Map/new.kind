@@ -1,2 +1,0 @@
-Kind.Map.new<A: Type>: Kind.Map<A>
-  BitsMap.new<A>

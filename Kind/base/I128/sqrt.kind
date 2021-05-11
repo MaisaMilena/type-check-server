@@ -1,3 +1,0 @@
-I128.sqrt(val: I128): I128
-  open val
-  I128.new(Word.s_sqrt!(val.value))

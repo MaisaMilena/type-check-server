@@ -1,2 +1,0 @@
-Int.to_nat_signed(a: Int): Pair<Bool, Nat>
-  {Int.is_neg(a), Int.abs(a)}

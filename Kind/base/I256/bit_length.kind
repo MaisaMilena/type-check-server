@@ -1,3 +1,0 @@
-I256.bit_length(size: I256): Nat
-  open size
-  Word.bit_length!(size.value)

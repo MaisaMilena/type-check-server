@@ -1,2 +1,0 @@
-Kind.Term.show(term: Kind.Term): String
-  Kind.Term.show.go(term, Maybe.none!)

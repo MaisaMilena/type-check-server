@@ -1,2 +1,0 @@
-Mons.Map: Type
-  BitsMap<List<Mons.Object>>

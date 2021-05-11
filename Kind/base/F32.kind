@@ -1,3 +1,0 @@
-type F32 {
-  new(word: Word(32))
-}

@@ -1,2 +1,0 @@
-Word.mul<size: Nat>(a: Word(size), b: Word(size)): Word(size)
-  Word.mul.go<size, size>(a, b, Word.to_zero<size>(a))

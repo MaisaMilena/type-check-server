@@ -14,3 +14,4 @@ playground.kind
 playground.txt
 playground_log.txt
 .env
+log/

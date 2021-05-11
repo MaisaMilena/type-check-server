@@ -1,3 +1,0 @@
-U8.show(a: U8): String
-  open a
-  Word.show!(a.value)

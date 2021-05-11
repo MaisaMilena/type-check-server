@@ -1,4 +1,0 @@
-I8.add(a: I8, b: I8): I8
-  open a
-  open b
-  I8.new(Word.add!(a.value, b.value))

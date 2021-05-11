@@ -1,4 +1,0 @@
-I256.gte(a: I256, b: I256): Bool
-  open a
-  open b
-  Word.s_gte!(a.value, b.value)

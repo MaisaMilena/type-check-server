@@ -1,4 +1,0 @@
-U64.eql(a: U64, b: U64): Bool
-  open a
-  open b
-  Word.eql!(a.value, b.value)

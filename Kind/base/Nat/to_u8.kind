@@ -1,2 +1,0 @@
-Nat.to_u8(n: Nat): U8
-  U8.new(Nat.to_word!(n))

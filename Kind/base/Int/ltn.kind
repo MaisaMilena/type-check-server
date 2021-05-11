@@ -1,2 +1,0 @@
-Int.lte(a: Int, b: Int): Bool
-  Cmp.as_lte(Int.cmp(a, b))

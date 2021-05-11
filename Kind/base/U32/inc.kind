@@ -1,3 +1,0 @@
-U32.inc(a: U32): U32
-  open a
-  U32.new(Word.inc!(a.value))

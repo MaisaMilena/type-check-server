@@ -1,5 +1,0 @@
-BitsSet.has(bits: Bits, set: BitsSet): Bool
-  case BitsMap.get!(bits, set) {
-    none: false
-    some: true
-  }

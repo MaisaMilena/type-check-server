@@ -1,3 +1,0 @@
-// TODO: rename to VoxBox.is_empty
-VoxBox.empty: VoxBox
-  VoxBox.alloc_capacity(Nat.to_u32(100))

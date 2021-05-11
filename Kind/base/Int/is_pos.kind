@@ -1,3 +1,0 @@
-Int.is_pos(a: Int): Bool
-  open a
-  Nat.gtn(a.pos, a.neg)

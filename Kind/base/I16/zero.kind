@@ -1,2 +1,0 @@
-I16.zero: I16
-  I16.new(Word.zero!)

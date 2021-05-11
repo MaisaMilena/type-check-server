@@ -1,4 +1,0 @@
-I64.add(a: I64, b: I64): I64
-  open a
-  open b
-  I64.new(Word.add!(a.value, b.value))

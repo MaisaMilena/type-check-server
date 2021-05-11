@@ -1,8 +1,0 @@
-Parser.avoiding<V: Type>(test: Parser(Unit), parse: Parser(V)): Parser(V)
-  Parser {
-    get avoided = Parser.try<Unit>(test)
-    if avoided then
-      Parser.fail<V>("Avoided.")
-    else
-      parse
-  }

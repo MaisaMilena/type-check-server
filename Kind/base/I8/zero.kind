@@ -1,2 +1,0 @@
-I8.zero: I8
-  I8.new(Word.zero!)

@@ -1,4 +1,0 @@
-Kind.Comp.get_arity(term: Kind.Comp): Nat
-  case term {
-    lam: 1 + Kind.Comp.get_arity(term.body)
-  } default 0

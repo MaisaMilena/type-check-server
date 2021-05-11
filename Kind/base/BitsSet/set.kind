@@ -1,2 +1,0 @@
-BitsSet.set(bits: Bits, set: BitsSet): BitsSet
-  BitsMap.set<Unit>(bits, Unit.new, set)

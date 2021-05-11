@@ -1,2 +1,0 @@
-Int.gtn(a: Int, b: Int): Bool
-  Cmp.as_gtn(Int.cmp(a, b))

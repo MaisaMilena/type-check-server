@@ -1,2 +1,0 @@
-Int.ltn(a: Int, b: Int): Bool
-  Cmp.as_ltn(Int.cmp(a, b))

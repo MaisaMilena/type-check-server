@@ -1,4 +1,0 @@
-U128.gte(a: U128, b: U128): Bool
-  open a
-  open b
-  Word.gte!(a.value, b.value)

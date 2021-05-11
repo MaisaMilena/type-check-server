@@ -1,4 +1,0 @@
-U128.gtn(a: U128, b: U128): Bool
-  open a
-  open b
-  Word.gtn!(a.value, b.value)

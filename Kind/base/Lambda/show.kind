@@ -1,6 +1,0 @@
-Lambda.show<n: Nat>(term: Lambda<n>): String
-  case term {
-    var: "#" | Nat.show(Fin.to_nat!(term.index))
-    lam: "λ" | Lambda.show!(term.body)
-    app: "(" | Lambda.show!(term.func) | " " | Lambda.show!(term.argm) | ")"
-  }

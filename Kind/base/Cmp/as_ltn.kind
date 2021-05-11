@@ -1,6 +1,0 @@
-Cmp.as_ltn(cmp: Cmp): Bool
-  case cmp {
-    ltn: Bool.true,
-    eql: Bool.false,
-    gtn: Bool.false,
-  }

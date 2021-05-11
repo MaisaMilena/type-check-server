@@ -1,3 +1,0 @@
-U8.sqrt(val: U8): U8
-  open val
-  U8.new(Word.sqrt!(val.value))

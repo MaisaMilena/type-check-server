@@ -1,3 +1,0 @@
-// Sets the global state stored in a key
-IO.set_state(key: String, val: String): IO<Unit>
-  ?a

@@ -1,3 +1,0 @@
-type U16 {
-  new(value: Word(16))
-}
