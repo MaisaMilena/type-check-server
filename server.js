@@ -10,15 +10,18 @@ app.use(express.static("docs"));
 app.get("/api/check_term", async (req, res, next) => {
   var code = ""
   var req_code = req.query.code;
+  var req_data = req._parsedUrl.query;
   var req_start = Date.now();
-  if (req_code) {
+  
+  if (req_data) {
     try{
-      // req_code = utils.clear_url_code(req_code)
-      code = await utils.type_check(req_code)
+      code = await utils.type_check(req_data)
     } catch (e) {
       console.log("[Error - type check code] "+ utils.date_now() + ": ", e)
+      log(req, req_start, "type check error");
+      res.send("Internal error. Couldn't type check.", e);
     }
-    log(req, req_start, "sucess");
+    log(req, req_start, "success");
     res.send(code);
   } else {
     log(req, req_start, "internal error");
