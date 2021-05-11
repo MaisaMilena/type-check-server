@@ -39,11 +39,18 @@ const date_now = () => {
 
 // Save the log of the request
 function save_log(log){
-  process.chdir("./../../");
-  fs.appendFile("playground_log.txt", "\n"+log, 
-  () => { 
-    
-    console.log(date_now()+": updated log")});
+  process.chdir("./../../log/");
+  try {
+    fs.writeFileSync(Date.now()+".txt", log)
+    console.log(date_now()+": updated log");
+  } catch (e) {
+    console.log(date_now()+": couldn't save log: ", e);
+  }
 }
 
 module.exports = {type_check, save_log, date_now}
+
+/*
+Resources: 
+http://www.blooberry.com/indexdot/html/topics/urlencoding.htm
+*/
