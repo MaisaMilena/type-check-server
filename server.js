@@ -1,51 +1,48 @@
 var express = require("express");
 var app = express();
 var cors = require("cors");
-var utils = require("./utils");
+var { upd_log, log_msg } = require("./utils");
+const { Worker } = require('worker_threads');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static("docs"));
 
 app.get("/api/check_term", async (req, res, next) => {
-  var code = ""
-  var req_code = req.query.code;
+  
   var req_data = req._parsedUrl.query;
   var req_start = Date.now();
   
-  if (req_data) {
-    try{
-      code = await utils.type_check(req_data)
-    } catch (e) {
-      console.log("[Error - type check code] "+ utils.date_now() + ": ", e)
-      log(req, req_start, "type check error");
-      res.send("Internal error. Couldn't type check.", e);
+  if(req_data) {
+    const worker = new Worker("./worker.js");
+    if (process.cwd().slice(-9) !== "Kind/base") {
+      process.chdir("./../Kind/base");
     }
-    log(req, req_start, "success");
-    res.send(code);
+    worker.postMessage(req_data);
+
+    worker.on('message', (msg) => {
+      upd_log(req, req_start, log_msg.success, "")
+      process.chdir(__dirname);
+      res.send(msg);
+    });
+
+    worker.on('error', (e) => {
+      let err = upd_log(req, req_start, log_msg.worker_error, e)
+      res.send(err)
+    });
+    
+    worker.on('exit', (code) => {
+      if (code !== 0) {
+        upd_log(req, req_start, log_msg.worker_error, code)
+        res.send(err)
+      }
+    });
+
   } else {
-    log(req, req_start, "internal error");
-    res.send("Internal error. Couldn't type check.")
+    let err = upd_log(req, req_start, log_msg.query_error, "")
+    res.send(err)
   }
 })
 
-// Log the request
-function log(req, req_start, status) {
-  const { url, socket } = req;
-  const { remote_address } = socket;
-
-  var log = JSON.stringify({
-    status: status,
-    timestamp: Date.now(),
-    processingTime: Date.now() - req_start,
-    remote_address, // not working
-    url,
-    code: req.query.code ? req.query.code : ""
-  })
-  utils.save_log(log);
-}
-
-var port = process.argv[2] || "80";
 app.listen(3030);
-
 console.log("Listening on port " + 3030 + ".");
