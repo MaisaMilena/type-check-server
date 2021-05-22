@@ -2,7 +2,8 @@ var express = require("express");
 var app = express();
 var cors = require("cors");
 var { upd_log, log_msg } = require("./utils");
-const { Worker, isMainThread, parentPort } = require('worker_threads');
+const { Worker } = require('worker_threads');
+var {execSync} = require("child_process");
 
 app.use(cors());
 app.use(express.json());
@@ -58,19 +59,26 @@ app.get("/api/check_term", async (req, res, next) => {
   
   if(req_data) {
     const worker = new Worker("./worker.js");
+    if (process.cwd().slice(-9) !== "Kind/base") {
+      process.chdir("./../Kind/base");
+    }
     worker.postMessage(req_data);
 
     worker.on('message', (msg) => {
-      upd_log(req, req_start, log_msg.success, "");
+      process.chdir(__dirname);
       res.send(msg);
     });
 
     worker.on('error', (e) => {
-      upd_log(req, req_start, log_msg.worker_error, e)});
+      let err = upd_log(req, req_start, log_msg.worker_error, e)
+      res.send(err)
+    });
     
     worker.on('exit', (code) => {
-      if (code !== 0)
+      if (code !== 0) {
         upd_log(req, req_start, log_msg.worker_error, code)
+        res.send(err)
+      }
     });
 
   } else {

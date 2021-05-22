@@ -1,17 +1,14 @@
 const fs = require('fs');
 var {execSync} = require("child_process");
-const kind = require("kind-lang");
 
-// Goes to /base to write a new file and type checks it
+// Must be in Kind/base to write a new file and type checks it
 async function type_check(code) {
-  try{
+  try {
     var code = clear_data(code)
-    if (process.cwd().slice(-9) !== "Kind/base"){
-      process.chdir("./../Kind/base");
-    }
     fs.writeFileSync("playground.kind", code);
     let aux = __dirname + "/playground.txt";
     execSync("kind playground.kind > "+aux);
+    upd_log(req, req_start, log_msg.success, "");
     return format_output(fs.readFileSync(aux));
   } catch (e) {
     throw e;
