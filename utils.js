@@ -8,7 +8,6 @@ async function type_check(code) {
     fs.writeFileSync("playground.kind", code);
     let aux = __dirname + "/playground.txt";
     execSync("kind playground.kind > "+aux);
-    upd_log(req, req_start, log_msg.success, "");
     return format_output(fs.readFileSync(aux));
   } catch (e) {
     throw e;
@@ -69,7 +68,7 @@ const log_msg = {
   type_check_error: "Internal error. Couldn't type check.",
   worker_error: "Worker error.",
   worker_exit: "Worker stopped with exit code ",
-  success: "Type check sucess!"
+  success: "Response sent to client!"
 }
 
 function upd_log(req, req_start, msg, err) {
