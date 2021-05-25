@@ -1,29 +1,4 @@
 const fs = require('fs');
-var {execSync} = require("child_process");
-
-// Must be in Kind/base to write a new file and type checks it
-async function type_check(code) {
-  try {
-    var code = clear_data(code)
-    fs.writeFileSync("playground.kind", code);
-    let aux = __dirname + "/playground.txt";
-    execSync("kind playground.kind > "+aux);
-    return format_output(fs.readFileSync(aux));
-  } catch (e) {
-    throw e;
-  }
-}
-
-// Removes "code=" from the URL
-// ex: code=type%20Foo%20%7Ba%7D
-const clear_data = (input) => {
-  var aux = input.slice(5)
-  try {
-    return decodeURI(aux);
-  } catch {
-    return "URL decoding error"
-  }
-}
 
 // Clear stuffs related to color that appears on terminal
 const format_output = (output) => {
@@ -66,6 +41,8 @@ function log(req, req_start, status) {
 const log_msg = {
   query_error: "Query Error. Unable to find query on the request.",
   type_check_error: "Internal error. Couldn't type check.",
+  run_code_error: "Internal error. Couldn't execute this term.",
+  invalid_url: "Invalid URL. Check the parameters and try again.",
   worker_error: "Worker error.",
   worker_exit: "Worker stopped with exit code ",
   success: "Response sent to client!"
@@ -78,7 +55,7 @@ function upd_log(req, req_start, msg, err) {
 }
 
 
-module.exports = {type_check, save_log, date_now, upd_log, log_msg}
+module.exports = {save_log, date_now, upd_log, log_msg, format_output}
 
 /*
 Resources: 
