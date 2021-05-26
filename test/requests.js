@@ -1,6 +1,8 @@
 process.env.NODE_ENV = 'test';
 require('dotenv').config();
 
+const utils = require('../utils');
+
 //Require the dev-dependencies
 let chai = require('chai');
 let chaiHttp = require('chai-http');
@@ -24,6 +26,12 @@ const type_check_fails = (res) => {
   expect(end).to.not.equal(checked_success);
 }
 
+const compilation_error = (res) => {
+  const comp_error = "Compilation error.\n";
+  const start = res.startsWith(comp_error);
+  expect(start).to.equal(true);
+}
+
 
 
 chai.use(chaiHttp);
@@ -31,7 +39,28 @@ chai.use(chaiHttp);
  /*
   * Test the /GET route
   */
+ // Note: it will print the error on console
  describe('/GET type check', () => {
+  it('it shouldnt type check on Segmentation fault', (done) => {
+    chai.request(url)
+      .get('/api/check_term')
+      .query({code: `
+bugar  : Unit -> IO(Unit)
+  (u) bugar(u)
+
+bugar2 : Unit -> IO(Unit)
+  (u) bugar(u)
+
+App.Kaelin.App.test: bugar(Unit.new) == bugar2(Unit.new)
+  refl
+      `})
+      .end((err, res) => {
+        res.should.have.status(200);
+        expect(res.text).to.equal(utils.log_msg.type_check_error);
+        done();
+      });
+  });
+
   it('it should type check an existing term', (done) => {
     chai.request(url)
       .get('/api/check_term')
@@ -42,7 +71,7 @@ chai.use(chaiHttp);
         done();
       });
   });
-  it('it should NOT type check an empty term', (done) => {
+  it('it should fail to type check an empty term', (done) => {
     chai.request(url)
       .get('/api/check_term')
       .query({code: ''})
@@ -52,17 +81,66 @@ chai.use(chaiHttp);
         done();
       });
   });
+  it('it should type check on a loop', (done) => {
+    chai.request(url)
+      .get('/api/check_term')
+      .query({cod: `
+bugar : IO(Unit)
+  bugar
 
-  // it('it should fail if req does not have the right param', (done) => {
-  //   chai.request(url)
-  //     .get('/api/check_term')
-  //     .query({code: 'type Nat {zero, succ(pred: Nat)}'})
-  //     .end((err, res) => {
+App.Kaelin.App.test: IO(Unit)
+  bugar
+      `})
+      .end((err, res) => {
+        res.should.have.status(200);
+        expect(res.text).to.equal(utils.log_msg.invalid_url);
+        done();
+      });
+  });
 
-  //       // expect(err).to.be.null;
-  //       res.should.have.status(200);
-  //       // expect(res).to.have.param('code');
-  //       done();
-  //     });
-  // });
+
+  it('it should fail if req does not have the right param', (done) => {
+    chai.request(url)
+      .get('/api/check_term')
+      .query({cod: 'type A {b: Nat}'})
+      .end((err, res) => {
+        res.should.have.status(200);
+        expect(res.text).to.equal(utils.log_msg.invalid_url);
+        done();
+      });
+  });
+  it('it should fail if req param is empty', (done) => {
+    chai.request(url)
+      .get('/api/check_term')
+      .query({code: ''})
+      .end((err, res) => {
+        res.should.have.status(200);
+        expect(res.text).to.equal(utils.log_msg.invalid_url);
+        done();
+      });
+  });
+
+  // Run term
+  // --------
+  it('it should run a term', (done) => {
+    chai.request(url)
+      .get('/api/run_term')
+      .query({code: "playground.main: _ 5 + 3"})
+      .end((err, res) => {
+        res.should.have.status(200);
+        expect(res.text).to.equal("8n\n");
+        done();
+      });
+  });
+  it('it should fail to run without a "playground.main" term', (done) => {
+    chai.request(url)
+      .get('/api/run_term')
+      .query({code: "main: _ 5 + 3"})
+      .end((err, res) => {
+        res.should.have.status(200);
+        compilation_error(res.text);
+        done();
+      });
+  });
+  
 });
