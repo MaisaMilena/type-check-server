@@ -1,4 +1,5 @@
 const fs = require('fs');
+require('dotenv').config();
 
 // Clear stuffs related to color that appears on terminal
 const format_output = (output) => {
@@ -48,9 +49,11 @@ const log_msg = {
   success: "Response sent to client!"
 }
 
+
 function upd_log(req, req_start, msg, err) {
   console.log(date_now() + ": " + msg + "\n", err)
-  log(req, req_start, msg);
+  if (process.env.NODE_ENV !== "test")
+    log(req, req_start, msg);
   return log_msg[msg];
 }
 

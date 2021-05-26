@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "node server.js"
+    "start": "SET NODE_ENV=dev && node server.js",
+    "test": "mocha --timeout 10000"
   },
   "name": "type-check-server",
   "version": "1.0.0",
@@ -17,14 +18,18 @@
   },
   "homepage": "https://github.com/uwu-tech/type-check-server#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "kind-lang": "^1.0.44"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
     "http-server": "^0.12.3",
+    "mocha": "^8.4.0",
     "webpack": "^5.36.1",
     "webpack-cli": "^4.6.0"
   }

@@ -3,6 +3,7 @@ var app = express();
 var cors = require("cors");
 var { upd_log, log_msg } = require("./utils");
 const { Worker } = require('worker_threads');
+require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
@@ -44,7 +45,9 @@ app.get("/api/check_term", async (req, res, next) => {
   }
 })
 
-
+/**
+ * Runs the term "playground.main".
+ */
 app.get("/api/run_term", async (req, res) => {
   var req_data = req._parsedUrl.query;
   var req_start = Date.now();
@@ -81,17 +84,12 @@ app.get("/api/run_term", async (req, res) => {
 
 })
 
+if (process.env.NODE_ENV === "test") {
+  app.listen(process.env.TEST_PORT);
+  console.log("Listening on port " + process.env.TEST_PORT + ".");
+} else {
+  app.listen(3030);
+  console.log("Listening on port " + 3030 + ".");
+}
 
-
-
-app.listen(3030);
-console.log("Listening on port " + 3030 + ".");
-
-
-// TODO:
-/*
- - add Jest
- - add tests for type check
- - add tests for run terms
- - get term
-*/
+module.exports = app; // for testing

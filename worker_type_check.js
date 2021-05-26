@@ -8,8 +8,8 @@ parentPort.on("message", async req_data => {
   try {
     let data = new URLSearchParams(req_data);
     let code = data.get("code");
-    if (code){
-      var res = await type_check(req_data);
+    if (code) {
+      var res = await type_check(code);
       parentPort.postMessage(res);
     } else {
       parentPort.postMessage(log_msg.invalid_url);
