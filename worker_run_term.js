@@ -1,15 +1,15 @@
 const {parentPort} = require('worker_threads');
-var {log_msg, format_output} = require("./utils");
+var {log_msg, format_output, clear_data} = require("./utils");
 const fs = require('fs');
 var {execSync} = require("child_process");
 
 parentPort.on("message", async req_data => {
   
   try {
-    let data = new URLSearchParams(req_data);
-    let code = data.get("code");
+    let code = clear_data(req_data);
     if (code) {
       var res = await run_term(code);
+      console.log(res);
       parentPort.postMessage(res);
     } else {
       parentPort.postMessage(log_msg.invalid_url);
@@ -31,4 +31,6 @@ async function run_term(code) {
     throw e;
   }
 }
+
+
 

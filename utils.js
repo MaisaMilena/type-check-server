@@ -58,8 +58,23 @@ function upd_log(req, req_start, msg, err) {
   return log_msg[msg];
 }
 
+// Removes "code=" from the URL and clear encoded URI symbols
+// ex: code=type%20Foo%20%7Ba%7D
+const clear_data = (input) => {
+  var aux = input.slice(5)
+  if (process.env.NODE_ENV !== "test") {
+  try {
+    return decodeURI(aux);
+  } catch {
+    return "URL decoding error"
+  }
+  } else {
+    let data = new URLSearchParams(input);
+    return data.get("code");
+  }
+}
 
-module.exports = {save_log, date_now, upd_log, log_msg, format_output}
+module.exports = {save_log, date_now, upd_log, log_msg, format_output, clear_data}
 
 /*
 Resources: 

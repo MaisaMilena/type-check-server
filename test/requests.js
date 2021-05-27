@@ -119,28 +119,29 @@ App.Kaelin.App.test: IO(Unit)
         done();
       });
   });
+  
+});
 
-  // Run term
-  // --------
+describe('/GET run term', () => {
   it('it should run a term', (done) => {
     chai.request(url)
       .get('/api/run_term')
-      .query({code: "playground.main: _ 5 + 3"})
+      .query({code: "playground.main: Nat 5 + 10"})
       .end((err, res) => {
         res.should.have.status(200);
-        expect(res.text).to.equal("8n\n");
+        expect(res.text).to.equal("15n\n");
         done();
       });
   });
   it('it should fail to run without a "playground.main" term', (done) => {
     chai.request(url)
       .get('/api/run_term')
-      .query({code: "main: _ 5 + 3"})
+      .query({code: "main: Nat 5 + 10"})
       .end((err, res) => {
         res.should.have.status(200);
         compilation_error(res.text);
         done();
       });
   });
-  
+
 });
