@@ -46,7 +46,8 @@ const log_msg = {
   invalid_url: "Invalid URL. Check the parameters and try again.",
   worker_error: "Worker error.",
   worker_exit: "Worker stopped with exit code ",
-  success: "Response sent to client!"
+  success: "Response sent to client!",
+  version_fail: "Couldn't find the Kind version."
 }
 
 

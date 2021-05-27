@@ -9,11 +9,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("docs"));
 
-app.get("/"), (req, res) => {
-  let type_check = "/api/type_check?code=<code_here>: type checks a code"
-  let run_term = "/api/run_term?code=<code_here>: runs the 'playground.main' term"
-  res.send(type_check.concat(run_term));
-}
+app.get("/kind_version", (req, res) => {
+  try{
+    let version = require("./../Kind/bin/js/package.json").version
+    res.send(version);
+  } catch (e) {
+    res.send(log_msg.version_fail)
+  }
+});
 
 app.get("/api/check_term", async (req, res, next) => {
   
