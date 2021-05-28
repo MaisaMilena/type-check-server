@@ -1,29 +1,5 @@
 const fs = require('fs');
-var {execSync} = require("child_process");
-
-// Must be in Kind/base to write a new file and type checks it
-async function type_check(code) {
-  try {
-    var code = clear_data(code)
-    fs.writeFileSync("playground.kind", code);
-    let aux = __dirname + "/playground.txt";
-    execSync("kind playground.kind > "+aux);
-    return format_output(fs.readFileSync(aux));
-  } catch (e) {
-    throw e;
-  }
-}
-
-// Removes "code=" from the URL
-// ex: code=type%20Foo%20%7Ba%7D
-const clear_data = (input) => {
-  var aux = input.slice(5)
-  try {
-    return decodeURI(aux);
-  } catch {
-    return "URL decoding error"
-  }
-}
+require('dotenv').config();
 
 // Clear stuffs related to color that appears on terminal
 const format_output = (output) => {
@@ -32,18 +8,18 @@ const format_output = (output) => {
 }
 
 const date_now = () => {
-  return new Date().toLocaleString("pt-BT", {timeZone: "America/Sao_Paulo"})
+  return new Date().toLocaleString("pt-BT", { timeZone: "America/Sao_Paulo" })
 }
 
 // Save the log of the request
-function save_log(log){
-  let aux = __dirname + "/log/"; 
-  let timestamp =  Date.now(); 
+function save_log(log) {
+  let aux = __dirname + "/log/";
+  let timestamp = Date.now();
   try {
-    fs.writeFileSync(aux + timestamp +".txt", log)
-    console.log(date_now()+": updated log on "+timestamp+".txt");
+    fs.writeFileSync(aux + timestamp + ".txt", log)
+    console.log(date_now() + ": updated log on " + timestamp + ".txt");
   } catch (e) {
-    console.log(date_now()+": couldn't save log: ", e);
+    console.log(date_now() + ": couldn't save log: ", e);
   }
 }
 
@@ -66,21 +42,43 @@ function log(req, req_start, status) {
 const log_msg = {
   query_error: "Query Error. Unable to find query on the request.",
   type_check_error: "Internal error. Couldn't type check.",
-  worker_error: "Worker error.",
-  worker_exit: "Worker stopped with exit code ",
-  success: "Response sent to client!"
+  run_code_error: "Internal error. Couldn't execute this term.",
+  invalid_url: "Invalid URL. Check the parameters and try again.",
+  worker_run_code_error: "Something when wrong while running the code.",
+  worker_type_check_error: "Something when wrong while type checking the code.",
+  worker_exit: "Process stopped with exit code ",
+  success: "Response sent to client!",
+  version_fail: "Couldn't find the Kind version."
 }
 
+
 function upd_log(req, req_start, msg, err) {
-  console.log(date_now() + ": " + msg + "\n", err)
-  log(req, req_start, msg);
+  if (process.env.NODE_ENV !== "test") {
+    console.log(date_now() + ": " + msg + "\n", err)
+    log(req, req_start, msg);
+  }
   return log_msg[msg];
 }
 
+// Removes "code=" from the URL and clear encoded URI symbols
+// ex: code=type%20Foo%20%7Ba%7D
+const clear_data = (input) => {
+  var aux = input.slice(5)
+  if (process.env.NODE_ENV !== "test") {
+    try {
+      return decodeURI(aux);
+    } catch {
+      return "URL decoding error"
+    }
+  } else {
+    let data = new URLSearchParams(input);
+    return data.get("code");
+  }
+}
 
-module.exports = {type_check, save_log, date_now, upd_log, log_msg}
+module.exports = { save_log, date_now, upd_log, log_msg, format_output, clear_data }
 
 /*
-Resources: 
+Resources:
 http://www.blooberry.com/indexdot/html/topics/urlencoding.htm
 */
