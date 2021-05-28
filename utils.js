@@ -8,18 +8,18 @@ const format_output = (output) => {
 }
 
 const date_now = () => {
-  return new Date().toLocaleString("pt-BT", {timeZone: "America/Sao_Paulo"})
+  return new Date().toLocaleString("pt-BT", { timeZone: "America/Sao_Paulo" })
 }
 
 // Save the log of the request
-function save_log(log){
-  let aux = __dirname + "/log/"; 
-  let timestamp =  Date.now(); 
+function save_log(log) {
+  let aux = __dirname + "/log/";
+  let timestamp = Date.now();
   try {
-    fs.writeFileSync(aux + timestamp +".txt", log)
-    console.log(date_now()+": updated log on "+timestamp+".txt");
+    fs.writeFileSync(aux + timestamp + ".txt", log)
+    console.log(date_now() + ": updated log on " + timestamp + ".txt");
   } catch (e) {
-    console.log(date_now()+": couldn't save log: ", e);
+    console.log(date_now() + ": couldn't save log: ", e);
   }
 }
 
@@ -44,8 +44,9 @@ const log_msg = {
   type_check_error: "Internal error. Couldn't type check.",
   run_code_error: "Internal error. Couldn't execute this term.",
   invalid_url: "Invalid URL. Check the parameters and try again.",
-  worker_error: "Worker error.",
-  worker_exit: "Worker stopped with exit code ",
+  worker_run_code_error: "Something when wrong while running the code.",
+  worker_type_check_error: "Something when wrong while type checking the code.",
+  worker_exit: "Process stopped with exit code ",
   success: "Response sent to client!",
   version_fail: "Couldn't find the Kind version."
 }
@@ -64,20 +65,20 @@ function upd_log(req, req_start, msg, err) {
 const clear_data = (input) => {
   var aux = input.slice(5)
   if (process.env.NODE_ENV !== "test") {
-  try {
-    return decodeURI(aux);
-  } catch {
-    return "URL decoding error"
-  }
+    try {
+      return decodeURI(aux);
+    } catch {
+      return "URL decoding error"
+    }
   } else {
     let data = new URLSearchParams(input);
     return data.get("code");
   }
 }
 
-module.exports = {save_log, date_now, upd_log, log_msg, format_output, clear_data}
+module.exports = { save_log, date_now, upd_log, log_msg, format_output, clear_data }
 
 /*
-Resources: 
+Resources:
 http://www.blooberry.com/indexdot/html/topics/urlencoding.htm
 */

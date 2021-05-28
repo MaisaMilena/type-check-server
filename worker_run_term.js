@@ -4,12 +4,10 @@ const fs = require('fs');
 var {execSync} = require("child_process");
 
 parentPort.on("message", async req_data => {
-  
   try {
-    let code = clear_data(req_data);
+    var code = clear_data(req_data);
     if (code) {
       var res = await run_term(code);
-      console.log(res);
       parentPort.postMessage(res);
     } else {
       parentPort.postMessage(log_msg.invalid_url);
@@ -28,9 +26,7 @@ async function run_term(code) {
     execSync("kind playground.main --run > "+aux);
     return format_output(fs.readFileSync(aux));
   } catch (e) {
-    throw e;
+    throw e
   }
 }
-
-
 

@@ -133,6 +133,25 @@ describe('/GET run term', () => {
         done();
       });
   });
+  it('it should run a loop term', (done) => {
+    chai.request(url)
+      .get('/api/run_term')
+      .query({code: `
+foo(a: Nat): Nat
+  case a {
+    zero: a
+    succ: foo(a)
+  }
+
+playground.main: Nat
+  foo(5)
+      `})
+      .end((err, res) => {
+        res.should.have.status(200);
+        expect(res.text).to.equal("15n\n");
+        done();
+      });
+  });
   it('it should fail to run without a "playground.main" term', (done) => {
     chai.request(url)
       .get('/api/run_term')
