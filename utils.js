@@ -55,7 +55,7 @@ const log_msg = {
 function upd_log(req, req_start, msg, err) {
   if (process.env.NODE_ENV !== "test") {
     console.log(date_now() + ": " + msg + "\n", err)
-    log(req, req_start, msg);
+    // log(req, req_start, msg);
   }
   return log_msg[msg];
 }

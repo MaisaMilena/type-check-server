@@ -8,7 +8,8 @@ parentPort.on("message", async req_data => {
     var code = clear_data(req_data);
     if (code) {
       var res = await run_term(code);
-      parentPort.postMessage(res);
+      let output = check_valid_term(res) + res;
+      parentPort.postMessage(output);
     } else {
       parentPort.postMessage(log_msg.invalid_url);
     }
@@ -18,8 +19,16 @@ parentPort.on("message", async req_data => {
   }
 });
 
+function check_valid_term(res) {
+  let clear = res.slice(0, -1);
+  if (clear.endsWith("Couldn't find or compile term: 'playground.main'.")) {
+    return "[!] To run a term, the code must be inside a 'playground.main: Type' function. \n\n"
+  } else {return ""}
+}
+
 // Must be in Kind/base to write a new file and run the term
 async function run_term(code) {
+  console.log("I'm in ", process.cwd());
   try {
     fs.writeFileSync("playground.kind", code);
     let aux = __dirname + "/playground.txt";
