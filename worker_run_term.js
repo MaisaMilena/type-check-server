@@ -22,7 +22,7 @@ parentPort.on("message", async req_data => {
 function check_valid_term(res) {
   let clear = res.slice(0, -1);
   if (clear.endsWith("Couldn't find or compile term: 'playground.main'.")) {
-    return "[!] To run a term, the code must be inside a 'playground.main: Type' function. \n\n"
+    return "[!] To run a term, the code must be inside\n a 'playground.main: Type' function. \n\n"
   } else {return ""}
 }
 
